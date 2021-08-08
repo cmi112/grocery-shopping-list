@@ -19,6 +19,7 @@
     "type": "git",
     "url": "https://github.com/cmi112/grocery-shopping-list.git"
   },
+  "homepage": ".",
   "author": "Abdilkani Eidle",
   "license": "ISC",
   "dependencies": {
