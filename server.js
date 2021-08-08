@@ -10,6 +10,7 @@ const itemsRouter = require("./routes/itemRoutes");
 
 // const {  mongoURL } = require("./config/env");
 const path = require("path");
+
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -53,7 +54,7 @@ app.use(function (req, res, next) {
 
 app.use("/items", itemsRouter);
 if (process.env.NODE_ENV === "production") {
-  // Set static folder
+  
   app.use(express.static("client/build"));
 
   app.get("*", (req, res) => {
