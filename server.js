@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
-const port =5000;
+
 const createError=require("http-errors")
 
 
@@ -21,7 +21,7 @@ mongoose.connection.on("open", () => {
 });
 
 const app = express();
-app.use(core);
+
 
 
 
@@ -80,6 +80,9 @@ app.use((err,req,res,next)=>{
 
 
 
- app.listen(process.env.PORT || 5000, ()=>console.log("Server started on Port",process.env.PORT || 5000))
-
+app.listen(port, () => {
+  console.log("====================================");
+  console.log("Server start with port: " + port);
+  console.log("====================================");
+});
 
