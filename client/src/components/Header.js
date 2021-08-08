@@ -5,6 +5,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import Edit from "./Edit"
 import Additems from "./Additems"
 import Grocerylist from './Grocerylist';
 
@@ -31,6 +32,10 @@ export default function Header() {
           <Route path="/grocerylist">
             <Grocerylist />
           </Route>
+          <Route path="/edit">
+            <Edit/>
+          </Route>
+        
         
           
         </Switch>

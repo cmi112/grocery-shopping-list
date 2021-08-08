@@ -10,3 +10,13 @@ ul {
 li{
   list-style: none;
 }
+.product-list{
+  margin: 0 50px;
+}
+.title {
+  text-align: center;
+}
+.d-flex{
+  display: flex;
+  flex-wrap: wrap;
+}

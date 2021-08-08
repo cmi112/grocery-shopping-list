@@ -1,50 +1,69 @@
 import React,{useEffect,useState} from 'react'
-import axios from 'axios';
-import { Card,Button, Container,Row,Col} from 'react-bootstrap';
+import {Card,Button,Col} from "react-bootstrap"
 import "../styles/items.css"
-
-function Grocerylist() {
-  const [item,setItem]=useState([])
-  const getItem=()=>{
-  axios.get("http://localhost:5000/items")
-  .then(response=>{
-    console.log(response);
-    const myItem=response.data;
-    setItem(myItem)
-  })
-}
-useEffect(()=>getItem(),[])
  
-  return (<>
-    <h1>Grocery Items</h1>
-    <Container>
-      {item.map((items)=>(
-        <Row
-        style={{ margin: '1.8rem' }}>
-        <Card style={{ width: '18rem' }}>
+
+
+
+export default function Grocerylist() {
+  const [item,setItems]=useState([])
+  useEffect(()=>{
+    fetch("http://localhost:5000/items").then(res=>res.json()).then(result=>{
+      if(result.success){
+        setItems(result.data)
+      }else{
+        console.log(result.message);
+      }
+    })
+  },[])
+ async function deleteItem(_id){
+    // alert(_id)
+    let result= await fetch("http://localhost:5000/items/"+_id,{
+      method:"DELETE"
+    })
+    result= await result.json()
+    console.warn(result)
+    window.location.replace("/grocerylist")
+
+  }
+  async function editItem(_id){
+    // alert(_id)
+    let update= await fetch("http://localhost:5000/items/"+_id,{
+      method:"PATCH"
+    })
+    update= await update.json()
+    console.warn(update)
+    window.location.replace("/edit")
+
+  }
+  return (
+    <div className="product-list">
+      <h1 className="title">Grocery List</h1>
+      {item.map(it=>{
+        return(
+          <Card style={{ width: '18rem',margin:"2rem"}} key={it._id}>
           <Col >
-        <Card.Img variant="top" src={items.image} />
+        <Card.Img variant="top" src={it.image} />
         <Card.Body>
-          <Card.Title>{items.name}</Card.Title>
+          <Card.Title>{it.name}</Card.Title>
           <Card.Text>
-         Price : $ {items.price}
+         Price : $ {it.price}
           </Card.Text>
           <Card.Text>
-          {items.description}
+          {it.description}
           </Card.Text>
-          <Button variant="primary" style={{ margin: '1.4rem' }}>Edit</Button>
+          <Button variant="primary" style={{ margin: '1.4rem' }} onClick={()=>editItem(it._id)}>Edit</Button>
           {/* <Button variant="primary"></Button> */}
-          <Button variant="danger">Delete</Button>
+          <Button variant="danger" onClick={()=>deleteItem(it._id)}>Delete</Button>
+          
         </Card.Body>
         </Col>
       </Card>
-      </Row>
-        
-        ))}
-        </Container>
-  </>  
+          
+
+        )
+      })}
+      
+    </div>
   )
 }
-
-export default Grocerylist
-

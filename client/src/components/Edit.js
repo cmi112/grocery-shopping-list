@@ -1,33 +1,34 @@
 import React from 'react'
-import axios from "axios"
+// import axios from "axios"
 import {Form,Button} from "react-bootstrap"
 
 
-function Additems() {
-  const submit=async(event)=>{
-    event.preventDefault()
-    const name=event.target.name.value
-    const description=event.target.description.value
-    const image=event.target.image.value
-    const price=event.target.price.value
-    const groceryData={
-      name,
-      description,
-      image,
-      price,
+function Edit() {
+  // const submit=async(event)=>{
+  //   event.preventDefault()
+  //   const name=event.target.name.value
+  //   const description=event.target.description.value
+  //   const image=event.target.image.value
+  //   const price=event.target.price.value
+  //   const groceryData={
+  //     name,
+  //     description,
+  //     image,
+  //     price,
       
 
-    }
-    console.log(groceryData);
-    await axios.post("http://localhost:5000/items",groceryData)
+  //   }
+  //   console.log(groceryData);
+  //   await axios.post("http://localhost:5000/items",groceryData)
 
    
-    window.location.replace("/grocerylist")
+  //   window.location.replace("/grocerylist")
 
-  }
+  // }
   return (<>
-  <h1>Add Item</h1>
-    <Form onSubmit={submit} >
+  <h1>Edit Item</h1>
+  <h2>This Page is not complete !!!!</h2>
+    <Form>
     <Form.Group className="mb-3" >
       <Form.Label>Item Name</Form.Label>
       <Form.Control type="text" placeholder="Item Name" name="name" />
@@ -49,11 +50,11 @@ function Additems() {
   </Form.Group>
   
     <Button variant="primary" type="submit">
-      Add Item
+      Save
     </Button>
   </Form>
   </>
   )
 }
 
-export default Additems
+export default Edit
