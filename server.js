@@ -8,10 +8,9 @@ const createError=require("http-errors")
 const itemsRouter = require("./routes/itemRoutes");
 
 
-// const {  mongoURL } = require("./config/env");
+const { port, mongoURL } = require("./config/env");
 const path = require("path");
-
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(mongoURL, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -22,6 +21,7 @@ mongoose.connection.on("open", () => {
 });
 
 const app = express();
+app.use(core);
 
 
 
