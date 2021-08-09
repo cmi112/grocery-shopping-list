@@ -1,6 +1,7 @@
 {
   "name": "grocey-shopping-list",
   "version": "1.0.0",
+  "homepage": ".",
   "description": "this is Grocery shopping list app",
   "main": "server.js",
   "scripts": {
@@ -19,7 +20,6 @@
     "type": "git",
     "url": "https://github.com/cmi112/grocery-shopping-list.git"
   },
-  "homepage": ".",
   "author": "Abdilkani Eidle",
   "license": "ISC",
   "dependencies": {

@@ -27,7 +27,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.get("/",(req,res)=>{
+app.get("/items",(req,res)=>{
   res.sendFile(__dirname+"/client/index.html")
 })
 
