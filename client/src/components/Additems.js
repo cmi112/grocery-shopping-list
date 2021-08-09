@@ -41,7 +41,7 @@ function Additems() {
     </Form.Group>
     <Form.Group className="mb-3">
       <Form.Label>Item Image</Form.Label>
-      <Form.Control type="text" placeholder="Item image" name="image"/>
+      <Form.Control type="text" placeholder="use image adress here" name="image"/>
       
     </Form.Group>
     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
