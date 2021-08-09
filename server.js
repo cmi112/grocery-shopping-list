@@ -8,7 +8,7 @@ const createError=require("http-errors")
 const itemsRouter = require("./routes/itemRoutes");
 
 
-const { port, mongoURL } = require("./config/env");
+const {mongoURL } = require("./config/env");
 const path = require("path");
 mongoose.connect(mongoURL, {
   useNewUrlParser: true,
@@ -27,7 +27,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.get("/items",(req,res)=>{
+app.get("/",(req,res)=>{
   res.sendFile(__dirname+"/client/index.html")
 })
 
@@ -72,13 +72,7 @@ app.use((err,req,res,next)=>{
 
 
 
-
-
-
-
-
-
-
+const port =process.env.PORT || 5000
 
 app.listen(port, () => {
   console.log("====================================");
