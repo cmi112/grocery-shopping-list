@@ -2,8 +2,6 @@ require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors')
-
-
 const createError=require("http-errors")
 
 
@@ -24,19 +22,6 @@ mongoose.connection.on("open", () => {
 
 const app = express();
 app.use(cors());
-
-
-
-
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-app.use("/items", itemsRouter);
-
-app.get("/",(req,res)=>{
-  res.sendFile(__dirname+"/client/index.html")
-})
 
 // Add headers
 app.use(function (req, res, next) {
@@ -60,6 +45,12 @@ app.use(function (req, res, next) {
 
 
 
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use("/items", itemsRouter);
+
 if (process.env.NODE_ENV === "production") {
   
   app.use(express.static("client/build"));
@@ -79,7 +70,7 @@ app.use((err,req,res,next)=>{
 
 
 
-const port =process.env.PORT || 5000
+const port =process.env.PORT || 6000
 
 app.listen(port, () => {
   console.log("====================================");

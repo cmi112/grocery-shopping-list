@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import {Card,Button,Col} from "react-bootstrap"
 import "../styles/items.css"
+import baseURL from "../config/baseURL"
  
 
 
@@ -8,7 +9,7 @@ import "../styles/items.css"
 export default function Grocerylist() {
   const [item,setItems]=useState([])
   useEffect(()=>{
-    fetch("http://localhost:5000/items").then(res=>res.json()).then(result=>{
+    fetch(baseURL).then(res=>res.json()).then(result=>{
       if(result.success){
         setItems(result.data)
       }else{
@@ -18,7 +19,7 @@ export default function Grocerylist() {
   },[])
  async function deleteItem(_id){
     // alert(_id)
-    let result= await fetch("http://localhost:5000/items/"+_id,{
+    let result= await fetch(baseURL+"/"+_id,{
       method:"DELETE"
     })
     result= await result.json()
@@ -28,7 +29,7 @@ export default function Grocerylist() {
   }
   async function editItem(_id){
     // alert(_id)
-    let update= await fetch("http://localhost:5000/items/"+_id,{
+    let update= await fetch(baseURL+"/"+_id,{
       method:"PATCH"
     })
     update= await update.json()

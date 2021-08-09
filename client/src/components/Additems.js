@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from "axios"
 import {Form,Button} from "react-bootstrap"
+import baseURL from '../config/baseURL'
 
 
 function Additems() {
@@ -19,7 +20,7 @@ function Additems() {
 
     }
     console.log(groceryData);
-    await axios.post("http://localhost:5000/items",groceryData)
+    await axios.post(baseURL,groceryData)
 
    
     window.location.replace("/grocerylist")
