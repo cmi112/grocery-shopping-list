@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navbar,Nav,Container } from 'react-bootstrap'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,6 +9,7 @@ import {
 import Edit from "./Edit"
 import Additems from "./Additems"
 import Grocerylist from './Grocerylist';
+
 
 export default function Header() {
   return (
@@ -19,10 +21,16 @@ export default function Header() {
     <Nav className="me-auto">
       <Nav.Link href="additem">Add Items</Nav.Link>
     </Nav>
+    <Nav className="me-auto">
+      <Nav.Link href="groceryupdate">Update items</Nav.Link>
+    </Nav>
     </Container>
   </Navbar>
   <Switch>
-          <Route exact path="/">
+  <Route exact path="/">
+            <Grocerylist/>
+          </Route>
+          <Route  path="/groceryupdate">
             <Grocerylist />
           </Route>
           <Route  path="/additem">
@@ -35,6 +43,8 @@ export default function Header() {
           <Route path="/edit">
             <Edit/>
           </Route>
+          
+        
         
         
           
